@@ -1,0 +1,35 @@
+server:
+  port: ${server.port}
+  context-path: /zuul/
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.host}:${eureka.port}/eureka-server/eureka/
+  instance:
+    preferIpAddress: true
+spring:
+  application:
+    name: zuul
+  profiles:
+    active: test
+  redis:
+    database: 0
+    host: ${redis.host}
+    pool.max-active: 8
+    pool.max-idle: 8
+    pool.min-idle: 0
+    pool.max-wait: -1
+    port: 6379
+    timeout: 0
+    password: ${redis.password}
+zuul:
+  routes:
+    api-a:
+      path: /p/**
+      serviceId: provider
+    api-b:
+      path: /p3/**
+      serviceId: provider-3
+

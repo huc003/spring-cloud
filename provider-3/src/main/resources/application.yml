@@ -1,0 +1,14 @@
+server:
+  port: ${server.port}
+  context-path: /provider-3/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.host}:${eureka.port}/eureka-server/eureka/
+  instance:
+    preferIpAddress: true
+spring:
+  application:
+    name: provider-3
+  profiles:
+    active: test

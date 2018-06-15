@@ -1,0 +1,27 @@
+server:
+  context-path: /eureka-server/
+  port: ${server.port}
+spring:
+  profiles:
+    active: test
+  application:
+    name: eureka-server
+eureka:
+  server:
+    enableSelfPreservation: false
+    eviction-interval-timer-in-ms: 4000
+  instance:
+    hostname: ${eureka.host}
+    ip-address: ${eureka.ip.address}
+    prefer-ip-address: true
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.host}:${server.port}/eureka-server/eureka/
+security:
+  basic:
+    enabled: ${security.basic.enabled}
+  user:
+    name: ${security.user.name}
+    password: ${security.user.password}
