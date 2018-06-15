@@ -1,8 +1,5 @@
 package com.springcloud.config;
 
-import com.netflix.loadbalancer.IRule;
-import com.springcloud.rule.MyRule;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -13,8 +10,4 @@ import org.springframework.context.annotation.Configuration;
  **/
 @Configuration
 public class BaseConfig {
-    @Bean
-    public IRule getRule(){
-        return new MyRule();
-    }
 }

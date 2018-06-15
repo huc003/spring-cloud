@@ -19,6 +19,13 @@
         <spring-cloud.version>Dalston.SR3</spring-cloud.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+        </dependency>
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -36,6 +43,8 @@
         <module>provider-1</module>
         <module>provider-2</module>
         <module>provider-3</module>
+        <module>provider-3-api</module>
+        <module>provider-4</module>
         <module>zuul</module>
     </modules>
 

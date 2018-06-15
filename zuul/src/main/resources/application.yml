@@ -30,6 +30,9 @@ zuul:
       path: /p/**
       serviceId: provider
     api-b:
-      path: /p3/**
-      serviceId: provider-3
+      path: /p2/**
+      serviceId: provider-2
+ribbon:
+  eureka:
+    enabled: true
 

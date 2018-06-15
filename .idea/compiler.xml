@@ -9,6 +9,8 @@
         <module name="provider-1" />
         <module name="provider-2" />
         <module name="provider-3" />
+        <module name="provider-3-api" />
+        <module name="provider-4" />
         <module name="server" />
         <module name="zuul" />
       </profile>
@@ -17,6 +19,9 @@
       <module name="provider-1" target="1.8" />
       <module name="provider-2" target="1.8" />
       <module name="provider-3" target="1.8" />
+      <module name="provider-3-api" target="1.8" />
+      <module name="provider-4" target="1.8" />
+      <module name="provider-4-api" target="1.8" />
       <module name="server" target="1.8" />
       <module name="spring-cloud" target="1.8" />
       <module name="zuul" target="1.8" />
