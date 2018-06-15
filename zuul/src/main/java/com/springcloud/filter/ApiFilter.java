@@ -64,7 +64,7 @@ public class ApiFilter extends AbstractFilter {
                 count = Integer.valueOf(String.valueOf(redisCountTools.get(url + "_count")));
             }
             log.info("API --> {} 是否开启限流 --> {} 限流次数 --> {} 已访问次数 --> {}", requestUri, status, ratelimit, count);
-            //并且时间大于一分钟
+            //并且时间大于等于一分钟
             if (ratelimit >= count) {
                 throw new ZuulRuntimeException(new ZuulException(TOO_MANY_REQUESTS.toString(),
                         TOO_MANY_REQUESTS.value(), null));
