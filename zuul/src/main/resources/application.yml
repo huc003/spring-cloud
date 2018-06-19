@@ -32,6 +32,9 @@ zuul:
     api-b:
       path: /p2/**
       serviceId: provider-2
+    api-c:
+      path: /p4/**
+      serviceId: provider-4
 ribbon:
   eureka:
     enabled: true

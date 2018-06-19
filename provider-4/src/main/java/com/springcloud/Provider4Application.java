@@ -25,9 +25,13 @@ public class Provider4Application {
 	@Value("${server.port}")
 	private String port;
 
+	@Autowired
+	private Provider3Api provider3Api;
+
 	@RequestMapping("/hi")
 	public String sayHi(@RequestParam String name) {
 		System.out.println("provider-3  -->  "+name);
+		provider3Api.sayHi(name);
 		return "hi " + name + ",i am from port:" + port;
 	}
 }

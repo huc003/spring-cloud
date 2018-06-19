@@ -1,4 +1,4 @@
-package com.springcloud.rule;
+package com.springcloud.api.config;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -23,30 +23,22 @@ import java.util.Random;
 /**
  * @Author: 胡成
  * @Version: 0.0.1V
- * @Date: 2018/6/14
- * @Description: 自定义负载均衡
+ * @Date: 2018/6/19
+ * @Description: 类描述
  **/
 @Slf4j
-//@Configuration
-//@RibbonClient(name="provider", configuration=MyRule.class)
-public class MyRule implements IRule {
+@Configuration
+public class Provider3FeignConfig  implements IRule {
 
     ILoadBalancer lb;
 
     @Autowired
     private RedisCountTools redisCountTools;
 
-    @Autowired
-    private DiscoveryClient discoveryClient;
-
     @Override
     public Server choose(Object o) {
-        RequestContext requestContext = RequestContext.getCurrentContext();
-        HttpServletRequest request = requestContext.getRequest();
-        String requestUri = request.getRequestURI();
-        String[] url = requestUri.split("/");
-        String serverName = url[3];
-        List<ServiceInstance> servers = discoveryClient.getInstances(serverName);
+        List<Server> servers = lb.getAllServers();
+        log.info("全部服务器 --> {}",servers);
         return getWeightsServerByAppName(servers);
     }
 
@@ -55,14 +47,15 @@ public class MyRule implements IRule {
      * @Date: 2018/6/14 16:23
      * @Description: 根据用户请求的appName去获取redis服务权重信息
      **/
-    public Server getWeightsServerByAppName(List<ServiceInstance> servers) {
-        String name = servers.get(0).getServiceId().toLowerCase();
-        String host = servers.get(0).getHost().toLowerCase();
+    public Server getWeightsServerByAppName(List<Server> servers) {
+        String name = servers.get(0).getMetaInfo().getAppName().toLowerCase();
         Object redisProvider = redisCountTools.get(name);
         if (redisProvider == null || "".equals(redisProvider)) {
+            log.info("服务器数量  --> {}",servers.size());
             int index = new Random().nextInt(servers.size());
+            log.info("选择服务器 --> {}",index);
             log.info("request --> {} 客户端 --> {}", servers.get(index), name);
-            return new Server(servers.get(index).getHost(),servers.get(index).getPort());
+            return servers.get(index);
         }
         JSONObject jb = JSONObject.parseObject(String.valueOf(redisProvider));
         JSONArray ja = jb.getJSONArray("server");
@@ -73,31 +66,10 @@ public class MyRule implements IRule {
             ports[i] = ja.getJSONObject(i).getInteger("port");
         }
         int index = WeightRandomTools.getWeightRandom(weightArrays);
-        Server server = new Server(servers.get(index).getHost(),servers.get(index).getPort());
+        Server server = getServerByPort(servers, ports[index]);
         log.info("request --> {} 客户端 --> {}", server, jb.getString("appname"));
         return server;
     }
-//    public Server getWeightsServerByAppName(List<Server> servers) {
-//        String name = servers.get(0).getMetaInfo().getAppName().toLowerCase();
-//        Object redisProvider = redisCountTools.get(name);
-//        if (redisProvider == null || "".equals(redisProvider)) {
-//            int index = new Random().nextInt(servers.size());
-//            log.info("request --> {} 客户端 --> {}", servers.get(index), name);
-//            return servers.get(index);
-//        }
-//        JSONObject jb = JSONObject.parseObject(String.valueOf(redisProvider));
-//        JSONArray ja = jb.getJSONArray("server");
-//        double[] weightArrays = new double[ja.size()];
-//        int[] ports = new int[jb.size()];
-//        for (int i = 0; i < ja.size(); i++) {
-//            weightArrays[i] = ja.getJSONObject(i).getDouble("weights");
-//            ports[i] = ja.getJSONObject(i).getInteger("port");
-//        }
-//        int index = WeightRandomTools.getWeightRandom(weightArrays);
-//        Server server = getServerByPort(servers, ports[index]);
-//        log.info("request --> {} 客户端 --> {}", server, jb.getString("appname"));
-//        return server;
-//    }
 
     private Server getServerByPort(List<Server> servers, int port) {
         for (Server s : servers) {

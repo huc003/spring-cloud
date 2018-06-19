@@ -1,6 +1,6 @@
 server:
   port: ${server.port}
-  context-path: /provider/
+  context-path: /provider-3/
 eureka:
   client:
     serviceUrl:
@@ -9,6 +9,6 @@ eureka:
     preferIpAddress: true
 spring:
   application:
-    name: provider
+    name: provider-3
   profiles:
     active: test
