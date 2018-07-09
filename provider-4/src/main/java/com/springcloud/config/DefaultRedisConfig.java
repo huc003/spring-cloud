@@ -1,4 +1,4 @@
-package com.springcloud.api.config;
+package com.springcloud.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;

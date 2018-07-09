@@ -1,10 +1,12 @@
-//package com.springcloud.api.config;
+//package com.springcloud.config;
 //
 //import com.alibaba.fastjson.JSONArray;
 //import com.alibaba.fastjson.JSONObject;
 //import com.netflix.loadbalancer.ILoadBalancer;
 //import com.netflix.loadbalancer.IRule;
 //import com.netflix.loadbalancer.Server;
+//import com.springcloud.tools.RedisCountTools;
+//import com.springcloud.tools.WeightRandomTools;
 //import lombok.extern.slf4j.Slf4j;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Configuration;
@@ -19,7 +21,7 @@
 // * @Description: 类描述
 // **/
 //@Slf4j
-//@Configuration
+////@Configuration
 //public class Provider3FeignConfig  implements IRule {
 //
 //    ILoadBalancer lb;

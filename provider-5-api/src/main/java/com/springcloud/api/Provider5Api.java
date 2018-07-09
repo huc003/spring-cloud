@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * @Author: 胡成
  * @Version: 0.0.1V
- * @Date: 2018/6/15
+ * @Date: 2018/6/19
  * @Description: 类描述
  **/
-@FeignClient(value = "provider-3")
-public interface Provider3Api {
-    @GetMapping("/provider-3/hi")
+@FeignClient(value = "provider-5")
+public interface Provider5Api {
+    @GetMapping("/provider-5/hi")
     String sayHi(@RequestParam("name") String name);
 }

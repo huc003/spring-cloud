@@ -7,6 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/provider-3/provider-3.iml" filepath="$PROJECT_DIR$/provider-3/provider-3.iml" />
       <module fileurl="file://$PROJECT_DIR$/provider-3-api/provider-3-api.iml" filepath="$PROJECT_DIR$/provider-3-api/provider-3-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/provider-4/provider-4.iml" filepath="$PROJECT_DIR$/provider-4/provider-4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/provider-5/provider-5.iml" filepath="$PROJECT_DIR$/provider-5/provider-5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/provider-5-api/provider-5-api.iml" filepath="$PROJECT_DIR$/provider-5-api/provider-5-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/provider-6/provider-6.iml" filepath="$PROJECT_DIR$/provider-6/provider-6.iml" />
       <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/spring-cloud.iml" filepath="$PROJECT_DIR$/.idea/spring-cloud.iml" />
       <module fileurl="file://$PROJECT_DIR$/zuul/zuul.iml" filepath="$PROJECT_DIR$/zuul/zuul.iml" />

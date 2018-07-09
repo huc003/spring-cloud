@@ -1,6 +1,6 @@
 server:
   port: ${server.port}
-  context-path: /provider-4/
+  context-path: /provider-5/
 eureka:
   client:
     serviceUrl:
@@ -9,16 +9,6 @@ eureka:
     preferIpAddress: true
 spring:
   application:
-    name: provider-4
+    name: provider-5
   profiles:
     active: test
-  redis:
-    database: 0
-    host: ${redis.host}
-    pool.max-active: 8
-    pool.max-idle: 8
-    pool.min-idle: 0
-    pool.max-wait: -1
-    port: 6379
-    timeout: 0
-    password: ${redis.password}

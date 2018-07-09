@@ -45,6 +45,9 @@
         <module>provider-3</module>
         <module>provider-3-api</module>
         <module>provider-4</module>
+        <module>provider-5</module>
+        <module>provider-5-api</module>
+        <module>provider-6</module>
         <module>zuul</module>
     </modules>
 

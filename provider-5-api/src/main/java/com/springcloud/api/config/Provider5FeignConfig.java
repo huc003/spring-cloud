@@ -20,7 +20,7 @@
 // **/
 //@Slf4j
 //@Configuration
-//public class Provider3FeignConfig  implements IRule {
+//public class Provider5FeignConfig implements IRule {
 //
 //    ILoadBalancer lb;
 //
